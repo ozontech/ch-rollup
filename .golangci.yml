@@ -1,0 +1,28 @@
+run:
+  timeout: 5m
+  modules-download-mode: mod
+
+linters:
+  enable:
+    - goimports
+    - revive
+    - govet
+    - staticcheck
+    - errcheck
+    - paralleltest
+    - nilnil
+    - goheader
+    - misspell
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+linters-settings:
+  goimports:
+    local-prefixes: github.com/ozontech/ch-rollup
+  goheader:
+    template: |-
+      Copyright {{ YEAR }} LLC "Ozon Technologies".
+      SPDX-License-Identifier: Apache-2.0
