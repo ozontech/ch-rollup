@@ -1,6 +1,6 @@
 module github.com/ozontech/ch-rollup
 
-go 1.23
+go 1.23.0
 
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.30.3
@@ -11,7 +11,7 @@ require (
 	go.uber.org/mock v0.4.0
 	go.uber.org/multierr v1.11.0
 	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0
-	golang.org/x/sync v0.10.0
+	golang.org/x/sync v0.15.0
 )
 
 require (
