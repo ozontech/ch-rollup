@@ -5,8 +5,8 @@ package scheduler
 
 import (
 	"context"
-
-	"golang.org/x/exp/maps"
+	"maps"
+	"slices"
 
 	"github.com/ozontech/ch-rollup/pkg/rollup"
 	"github.com/ozontech/ch-rollup/pkg/types"
@@ -49,5 +49,5 @@ func prepareRollUpColumns(globalColumnSettings, currentColumnSettings []types.Co
 		result[columnSettings.Name] = columnSettings
 	}
 
-	return maps.Values(result)
+	return slices.Collect(maps.Values(result))
 }
