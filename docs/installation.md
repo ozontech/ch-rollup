@@ -3,7 +3,7 @@
 This document contains ***ch-rollup*** installation instructions.
 
 ## Library
-1. Install ```Go 1.23+```
+1. Install ```Go 1.24+```
 2. Import library:
 ```shell
 go get github.com/ozontech/ch-rollup
