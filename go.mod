@@ -3,7 +3,7 @@ module github.com/ozontech/ch-rollup
 go 1.24
 
 require (
-	github.com/ClickHouse/clickhouse-go/v2 v2.36.0
+	github.com/ClickHouse/clickhouse-go/v2 v2.37.2
 	github.com/alvaroloes/enumer v1.1.2
 	github.com/huandu/go-sqlbuilder v1.35.1
 	github.com/stretchr/testify v1.10.0
@@ -14,7 +14,7 @@ require (
 )
 
 require (
-	github.com/ClickHouse/ch-go v0.66.0 // indirect
+	github.com/ClickHouse/ch-go v0.66.1 // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-faster/city v1.0.1 // indirect
