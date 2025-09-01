@@ -145,7 +145,6 @@ func (s *RollUp) Run(ctx context.Context, opts RunOptions) error {
 	g, ctx := errgroup.WithContext(ctx)
 
 	for _, shard := range shards {
-		shard := shard
 
 		g.Go(func() error {
 			err = s.runOnShard(ctx, shard, opts)
