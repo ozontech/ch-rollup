@@ -1,7 +1,7 @@
 // Copyright 2025 LLC "Ozon Technologies".
 // SPDX-License-Identifier: Apache-2.0
 
-package common
+package common //revive:disable:var-naming
 
 import (
 	"context"

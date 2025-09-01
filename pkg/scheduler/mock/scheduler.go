@@ -21,6 +21,7 @@ import (
 type MockRollUp struct {
 	ctrl     *gomock.Controller
 	recorder *MockRollUpMockRecorder
+	isgomock struct{}
 }
 
 // MockRollUpMockRecorder is the mock recorder for MockRollUp.

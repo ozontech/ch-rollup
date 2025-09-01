@@ -21,6 +21,7 @@ import (
 type MockCluster struct {
 	ctrl     *gomock.Controller
 	recorder *MockClusterMockRecorder
+	isgomock struct{}
 }
 
 // MockClusterMockRecorder is the mock recorder for MockCluster.
@@ -59,6 +60,7 @@ func (mr *MockClusterMockRecorder) Shards(ctx any) *gomock.Call {
 type MockShard struct {
 	ctrl     *gomock.Controller
 	recorder *MockShardMockRecorder
+	isgomock struct{}
 }
 
 // MockShardMockRecorder is the mock recorder for MockShard.
@@ -154,6 +156,7 @@ func (mr *MockShardMockRecorder) QueryRow(ctx, query any, args ...any) *gomock.C
 type MockRows struct {
 	ctrl     *gomock.Controller
 	recorder *MockRowsMockRecorder
+	isgomock struct{}
 }
 
 // MockRowsMockRecorder is the mock recorder for MockRows.
@@ -237,6 +240,7 @@ func (mr *MockRowsMockRecorder) Scan(dest ...any) *gomock.Call {
 type MockRow struct {
 	ctrl     *gomock.Controller
 	recorder *MockRowMockRecorder
+	isgomock struct{}
 }
 
 // MockRowMockRecorder is the mock recorder for MockRow.
