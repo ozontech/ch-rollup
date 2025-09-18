@@ -5,7 +5,7 @@ go 1.24
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.40.1
 	github.com/alvaroloes/enumer v1.1.2
-	github.com/huandu/go-sqlbuilder v1.36.1
+	github.com/huandu/go-sqlbuilder v1.37.0
 	github.com/stretchr/testify v1.11.1
 	go.uber.org/goleak v1.3.0
 	go.uber.org/mock v0.6.0
@@ -20,6 +20,7 @@ require (
 	github.com/go-faster/city v1.0.1 // indirect
 	github.com/go-faster/errors v0.7.1 // indirect
 	github.com/google/uuid v1.6.0 // indirect
+	github.com/huandu/go-clone v1.7.3 // indirect
 	github.com/huandu/xstrings v1.4.0 // indirect
 	github.com/klauspost/compress v1.18.0 // indirect
 	github.com/pascaldekloe/name v1.0.1 // indirect
