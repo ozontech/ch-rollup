@@ -142,12 +142,10 @@ func (s *RollUp) Run(ctx context.Context, opts RunOptions) error {
 		return fmt.Errorf("failed to get shards: %w", err)
 	}
 
-	g, ctx := errgroup.WithContext(ctx)
-
+	g, eCtx := errgroup.WithContext(ctx)
 	for _, shard := range shards {
-
 		g.Go(func() error {
-			err = s.runOnShard(ctx, shard, opts)
+			err := s.runOnShard(eCtx, shard, opts)
 			if err != nil {
 				return fmt.Errorf("failed to run roll up on %s: %w", shard.Name(), err)
 			}
