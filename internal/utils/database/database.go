@@ -16,26 +16,26 @@ import (
 var errInvalidArguments = errors.New("invalid arguments")
 
 // CreateTableAs ...
-func CreateTableAs(ctx context.Context, shard database.Shard, database, srcTable, dstTable string) error {
-	if sqlUtils.ValidateEntityName(database) != nil || sqlUtils.ValidateEntityName(srcTable) != nil || sqlUtils.ValidateEntityName(dstTable) != nil {
+func CreateTableAs(ctx context.Context, shard database.Shard, databaseName, srcTableName, dstTableName string) error {
+	if sqlUtils.ValidateEntityName(databaseName) != nil || sqlUtils.ValidateEntityName(srcTableName) != nil || sqlUtils.ValidateEntityName(dstTableName) != nil {
 		return errInvalidArguments
 	}
 
-	if err := shard.Exec(ctx, fmt.Sprintf("CREATE TABLE %s AS %s", sqlUtils.QuotedDatabaseEntity(database, dstTable), sqlUtils.QuotedDatabaseEntity(database, srcTable))); err != nil {
-		return fmt.Errorf("failed to create table %s as %s in %s: %w", dstTable, srcTable, database, err)
+	if err := shard.Exec(ctx, fmt.Sprintf("CREATE TABLE %s AS %s", sqlUtils.QuotedDatabaseEntity(databaseName, dstTableName), sqlUtils.QuotedDatabaseEntity(databaseName, srcTableName))); err != nil {
+		return fmt.Errorf("failed to create table %s as %s in %s: %w", dstTableName, srcTableName, databaseName, err)
 	}
 
 	return nil
 }
 
 // DropTable ...
-func DropTable(ctx context.Context, shard database.Shard, database, table string) error {
-	if sqlUtils.ValidateEntityName(database) != nil || sqlUtils.ValidateEntityName(table) != nil {
+func DropTable(ctx context.Context, shard database.Shard, databaseName, tableName string) error {
+	if sqlUtils.ValidateEntityName(databaseName) != nil || sqlUtils.ValidateEntityName(tableName) != nil {
 		return errInvalidArguments
 	}
 
-	if err := shard.Exec(ctx, "DROP TABLE "+sqlUtils.QuotedDatabaseEntity(database, table)); err != nil {
-		return fmt.Errorf("failed to drop table %s in %s: %w", table, database, err)
+	if err := shard.Exec(ctx, "DROP TABLE "+sqlUtils.QuotedDatabaseEntity(databaseName, tableName)); err != nil {
+		return fmt.Errorf("failed to drop table %s in %s: %w", tableName, databaseName, err)
 	}
 
 	return nil

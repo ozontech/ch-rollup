@@ -1,7 +1,7 @@
 // Copyright 2025 LLC "Ozon Technologies".
 // SPDX-License-Identifier: Apache-2.0
 
-package clickhouse_go //revive:disable:var-naming
+package clickhouse_go
 
 import (
 	"errors"

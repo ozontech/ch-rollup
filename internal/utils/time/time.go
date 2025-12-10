@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 // Package time is a utils for working with time.
-package time //revive:disable-line:var-naming
+package time
 
 import "time"
 

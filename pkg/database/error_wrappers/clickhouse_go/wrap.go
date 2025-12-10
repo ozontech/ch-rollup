@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 // Package clickhouse_go implements error wrapper for 'clickhouse-go'.
-package clickhouse_go //revive:disable:var-naming
+package clickhouse_go
 
 import (
 	"errors"

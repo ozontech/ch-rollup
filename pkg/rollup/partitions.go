@@ -13,13 +13,13 @@ import (
 	"github.com/ozontech/ch-rollup/pkg/database"
 )
 
-func getPartitionsOnShard(ctx context.Context, shard database.Shard, database, table string) ([]string, error) {
+func getPartitionsOnShard(ctx context.Context, shard database.Shard, databaseName, tableName string) ([]string, error) {
 	sb := sqlbuilder.NewSelectBuilder().From("system.parts")
 
 	sb.Select("partition")
 	sb.Where(
-		sb.Equal("database", database),
-		sb.Equal("table", table),
+		sb.Equal("database", databaseName),
+		sb.Equal("table", tableName),
 		sb.Equal("active", 1),
 	)
 	sb.GroupBy("partition")
@@ -56,14 +56,14 @@ func getPartitionsOnShard(ctx context.Context, shard database.Shard, database, t
 
 // replacePartitionsOnShard replaces partitions on shard.
 // Arguments must be sanitized.
-func replacePartitionsOnShard(ctx context.Context, shard database.Shard, database, from, to string, partitions []string) error {
+func replacePartitionsOnShard(ctx context.Context, shard database.Shard, databaseName, from, to string, partitions []string) error {
 	// TODO: generate multistatement query.
 	for _, partition := range partitions {
 		b := sqlbuilder.Build(
 			"ALTER TABLE $? REPLACE PARTITION $? FROM $?",
-			sqlbuilder.Raw(sqlUtils.QuotedDatabaseEntity(database, to)),
+			sqlbuilder.Raw(sqlUtils.QuotedDatabaseEntity(databaseName, to)),
 			partition,
-			sqlbuilder.Raw(sqlUtils.QuotedDatabaseEntity(database, from)),
+			sqlbuilder.Raw(sqlUtils.QuotedDatabaseEntity(databaseName, from)),
 		)
 
 		sql, args := b.BuildWithFlavor(sqlbuilder.ClickHouse)

@@ -1,7 +1,7 @@
 // Copyright 2025 LLC "Ozon Technologies".
 // SPDX-License-Identifier: Apache-2.0
 
-package time //revive:disable-line:var-naming
+package time
 
 import (
 	"testing"
