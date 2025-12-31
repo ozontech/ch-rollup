@@ -7,7 +7,7 @@ toolchain go1.24.4
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.40.1
 	github.com/alvaroloes/enumer v1.1.2
-	github.com/huandu/go-sqlbuilder v1.38.1
+	github.com/huandu/go-sqlbuilder v1.38.2
 	github.com/stretchr/testify v1.11.1
 	go.uber.org/goleak v1.3.0
 	go.uber.org/mock v0.6.0
