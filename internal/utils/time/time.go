@@ -18,43 +18,32 @@ type Range struct {
 
 // SplitTimeRangeByInterval returns split by interval time ranges.
 func SplitTimeRangeByInterval(timeRange Range, interval time.Duration) []Range {
-	// TODO: refac
-
 	from := timeRange.From
 	to := timeRange.To
 
-	if interval >= to.Sub(from) {
-		return []Range{
-			{
-				From: from,
-				To:   to,
-			},
-		}
+	// Protection against an infinite loop or incorrect data
+	if interval <= 0 || !from.Before(to) {
+		return []Range{{From: from, To: to}}
 	}
 
-	var result []Range
-
-	next := from
-
-	for next.Before(to) {
-		curFrom := next
-		curNext := next.Add(interval)
-		if curNext.After(to) {
-			result = append(result, Range{
-				From: curFrom,
-				To:   to,
-			})
-
-			break
-		}
-
-		next = curNext
-
-		result = append(result, Range{
-			From: curFrom,
-			To:   curNext,
-		})
+	totalDist := to.Sub(from)
+	if interval >= totalDist {
+		return []Range{{From: from, To: to}}
 	}
+
+	// Calculate the exact number of intervals (rounded up)
+	count := int((totalDist + interval - 1) / interval)
+	result := make([]Range, count)
+
+	currFrom := from
+	for i := 0; i < count-1; i++ {
+		currTo := currFrom.Add(interval)
+		result[i] = Range{From: currFrom, To: currTo}
+		currFrom = currTo
+	}
+
+	// The last interval is guaranteed to be closed using “to” (we avoid flying over)
+	result[count-1] = Range{From: currFrom, To: to}
 
 	return result
 }
